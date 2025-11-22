@@ -82,10 +82,10 @@
         .summary-flex {
             display: flex;
             gap: 30px;
-            flex-wrap: wrap; /* Permite que las columnas se apilen en móvil */
+            flex-wrap: wrap; 
         }
         .summary-flex > div {
-            flex: 1 1 45%; /* Flex-grow, flex-shrink, flex-basis */
+            flex: 1 1 45%; 
         }
         
         /* --- ADVERTENCIAS --- */
@@ -100,41 +100,10 @@
             margin: 20px 0;
         }
 
-        /* --- TABLA DE NAVEGACIÓN (MENÚ) --- */
-        .menu-table-wrapper {
-            overflow-x: auto; /* Permite desplazamiento horizontal en pantallas pequeñas */
-        }
-        .menu-table {
-            width: 100%;
-            min-width: 600px; /* Asegura que la tabla no se colapse demasiado */
-            border-collapse: collapse;
-            margin: 20px 0;
-            box-shadow: var(--shadow-base);
-        }
-        .menu-table th, .menu-table td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--buho-light-gray);
-        }
-        .menu-table th {
-            background-color: var(--buho-light-gray);
-            color: var(--buho-gold);
-            text-transform: uppercase;
-        }
-        .menu-table tr:nth-child(even) {
-            background-color: #242424;
-        }
-        .menu-table td a {
-            font-weight: 700;
-        }
-        .indent {
-            padding-left: 30px;
-        }
-
         /* --- PESTAÑAS (TABS) PARA PROTOCOLO --- */
         .tabs {
             display: flex;
-            margin-bottom: -1px; /* Para que la pestaña activa se fusione con el contenido */
+            margin-bottom: -1px;
         }
         .tab-button {
             background-color: var(--buho-light-gray);
@@ -164,10 +133,10 @@
             h1 { font-size: 2em; }
             h2 { font-size: 1.5em; }
             .summary-flex > div {
-                flex-basis: 100%; /* Las columnas se apilan verticalmente */
+                flex-basis: 100%; 
             }
             .api-buttons a {
-                display: block; /* Botones de API en bloque */
+                display: block; 
                 margin-top: 10px;
             }
         }
@@ -177,80 +146,33 @@
     <div class="container">
         
         <header style="text-align: center; padding: 40px 0;">
-            <h1 style="color: white;"><span style="color: var(--buho-red);">🛡️ EL BUHO 89:</span> TWITCH BOT BAN LIST</h1>
-            <p style="font-size: 1.2em; color: var(--buho-text-light);">Acceso rápido y documentación del proyecto en <a href="https://banlist.elbuho89.org" style="color: var(--buho-gold); font-weight: 700;">banlist.elbuho89.org</a></p>
+            <h1 style="color: white;"><span style="color: var(--buho-red);">🛡️ EL BUHO 89:</span> BAN LIST</h1>
+            <p style="font-size: 1.2em; color: var(--buho-text-light);"><a href="https://banlist.elbuho89.org" style="color: var(--buho-gold); font-weight: 700;">banlist.elbuho89.org</a></p>
         </header>
 
-        <section id="summary">
-            <h2>📝 Resumen y Puntos Clave / Key Summary Points</h2>
-            
-            <div class="summary-flex">
-                <div>
-                    <h3>Resumen en Español</h3>
-                    <p>Lista dinámica de nombres de usuario asociados con spam, "follow bots" y actividad maliciosa en Twitch. Optimizada para ser consumida automáticamente por APIs de moderación.</p>
-                    <div class="warning-box">
-                        <i class="fas fa-exclamation-triangle"></i> **ADVERTENCIA CRÍTICA:** Revise <a href="./data/monitoreo.txt" class="warning">monitoreo.txt</a> antes de sancionar.
-                    </div>
-                </div>
-                
-                <div>
-                    <h3>English Summary</h3>
-                    <p>A community-maintained, dynamic list of usernames associated with spam, fake follows, and malicious activity on Twitch. Optimized for automated consumption via **TXT/JSON Raw URLs**.</p>
-                    <div class="warning-box">
-                        <i class="fas fa-exclamation-triangle"></i> **CRITICAL WARNING:** Check <a href="./data/monitoreo.txt" class="warning">monitoreo.txt</a> before sanctioning manually.
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <section id="api-access" style="text-align: center; margin: 40px 0;">
-            <h2>🔗 Enlaces API Directos / Direct API Links</h2>
-            <p style="color: var(--buho-gold);">Usa estos enlaces RAW para integrarte con CommanderRoot, StreamElements u otras herramientas de moderación.</p>
-            
+            <h2>🔗 Enlaces Rápidos / Quick Links</h2>
+
             <div class="api-buttons">
-                <a href="https://raw.githubusercontent.com/elbuho89/twitchbotsbanlist/main/data/ban.txt" target="_blank" class="cta-button api-link">
-                    <i class="fas fa-file-alt"></i> ban.txt (API TXT RAW)
+                <a href="https://github.com/elbuho89/banlist/blob/main/data/ban.txt" target="_blank" class="cta-button api-link">
+                    <i class="fas fa-file-alt"></i> ban.txt
                 </a>
-                <a href="https://raw.githubusercontent.com/elbuho89/twitchbotsbanlist/main/data/ban.json" target="_blank" class="cta-button api-link">
-                    <i class="fas fa-code"></i> ban.json (API JSON RAW)
+                <a href=https://github.com/elbuho89/banlist/blob/main/data/ban.txtban.json" target="_blank" class="cta-button api-link">
+                    <i class="fas fa-code"></i> ban.json
                 </a>
-                <a href="./data/monitoreo.txt" target="_blank" class="cta-button api-link">
-                    <i class="fas fa-eye"></i> monitoreo.txt (Sospechosos)
+                
+                <a href="https://github.com/elbuho89/banlist/blob/main/MENU.md" target="_blank" class="cta-button">
+                    <i class="fas fa-book"></i> MENU.MD
+                </a>
+                <a href="https://github.com/elbuho89/banlist/blob/main/Español/LEEME.md" target="_blank" class="cta-button">
+                    <i class="fas fa-file-word"></i> Leeme
+                </a>
+                <a href="https://github.com/elbuho89/banlist/blob/main/English/README.md" target="_blank" class="cta-button">
+                    <i class="fas fa-file-word"></i> Read Me
                 </a>
             </div>
         </section>
-
-
-        <section id="menu">
-            <h2>🧭 Guía del Repositorio / Repository Guide</h2>
-            <p>Tabla de navegación que detalla la función de cada archivo y carpeta principal del proyecto. Haz clic en el nombre para ir al archivo.</p>
-            
-            <div class="menu-table-wrapper">
-                <table class="menu-table">
-                    <thead>
-                        <tr>
-                            <th>Elemento</th>
-                            <th>Descripción / Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td><a href="./index.html">index.html</a></td><td>**ES:** Portada principal del sitio web. **EN:** Main website landing page.</td></tr>
-                        <tr><td><a href="./data/">data/</a></td><td>**ES:** Contiene las listas de nombres de usuario en formato puro para consumo API. **EN:** Contains raw username lists for API consumption.</td></tr>
-                        <tr><td class="indent">├── <a href="./data/ban.txt">ban.txt</a></td><td>**ES:** Lista principal de baneos confirmados (TXT). **EN:** Main confirmed ban list (TXT).</td></tr>
-                        <tr><td class="indent">├── <a href="./data/ban.json">ban.json</a></td><td>**ES:** Lista principal de baneos confirmados (JSON). **EN:** Main confirmed ban list (JSON).</td></tr>
-                        <tr><td class="indent">└── <a href="./data/monitoreo.txt">monitoreo.txt</a></td><td>**ES:** Cuentas que requieren **revisión manual obligatoria**. **EN:** Accounts requiring **mandatory manual review**.</td></tr>
-                        <tr><td><a href="./Español/">Español/</a></td><td>Carpeta de la **Documentación y Protocolos en Español**.</td></tr>
-                        <tr><td class="indent">└── <a href="./Español/LEEME.md">LEEME.md</a></td><td>**ES:** Contiene el **Aviso Legal, Protocolo de Moderación** y fuentes. **Lectura Obligatoria para Moderadores.**</td></tr>
-                        <tr><td><a href="./English/">English/</a></td><td>Folder for **English Documentation and Protocols**.</td></tr>
-                        <tr><td class="indent">└── <a href="./English/README.md">README.md</a></td><td>**EN:** Contains the **Full Disclaimer, Moderation Protocol**, and data sources. **Mandatory Reading for Moderators.**</td></tr>
-                        <tr><td><a href="./README.md">README.md</a></td><td>**ES:** Archivo de entrada de GitHub. Breve resumen del proyecto. **EN:** GitHub entry file. Brief bilingual project summary.</td></tr>
-                        <tr><td><a href="./LICENSE">LICENSE</a></td><td>**ES:** Licencia de Código Abierto (MIT). **EN:** Open Source License (MIT).</td></tr>
-                        <tr><td><a href="./MENU.md">MENU.md</a></td><td>**ES:** Este documento (si se accede desde GitHub). **EN:** This document (if accessed from GitHub).</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
 
         <section id="protocol" style="margin-top: 50px;">
             <h2 style="border-bottom: 2px solid var(--buho-red);">🛑 Aviso Legal y Protocolo Completo (Disclaimer)</h2>
@@ -310,7 +232,7 @@
         </section>
 
         <footer style="text-align: center; margin-top: 50px; padding: 20px 0; border-top: 1px solid var(--buho-light-gray);">
-            <p>EL BUHO 89 ™ | <a href="https://elbuho89.org" style="color: var(--buho-gold);">Website</a> | <a href="./LICENSE">License</a></p>
+            <p>EL BUHO 89 ™ | <a href="https://elbuho89.org" style="color: var(--buho-gold);">Website</a> | <a href="https://github.com/elbuho89/banlist/blob/main/LICENSE">License</a></p>
         </footer>
     </div>
 
@@ -333,6 +255,12 @@
             document.getElementById(tabName + "-content").style.display = "block";
             elmnt.className += " active";
         }
+        
+        // Inicializar con la pestaña en español activa
+        document.addEventListener('DOMContentLoaded', function() {
+             // Asegura que el contenido en español esté visible por defecto si JS está activo
+             openTab('es', document.querySelector('.tab-button'));
+        });
     </script>
 </body>
 </html>
