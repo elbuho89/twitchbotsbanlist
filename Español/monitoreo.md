@@ -7,6 +7,7 @@ Esta lista contiene nombres de usuario que han sido reportados por diversos sist
 **IMPORTANTE:** Esta sección NO constituye una lista de baneos confirmados. Las cuentas aquí listadas presentan una alta probabilidad de ser:
 1. **Cuentas Humanas Recuperadas:** Usuarios legítimos que han recuperado nombres utilizados previamente por bots.
 2. **Falsos Positivos:** Cuentas humanas detectadas erróneamente por los algoritmos.
+3. **Bots Legitimos:** Cuentas de bots que ayudan a la comunidad y/o verifican informacion de estadisticas de twitch
 
 ## 2. 🛑 RECOMENDACIÓN Y PROTOCOLO CRÍTICO
 
