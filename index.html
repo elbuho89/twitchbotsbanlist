@@ -1,266 +1,194 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🛡️ EL BUHO 89: TWITCH BOT BAN LIST (API READY)</title>
-    <meta name="description" content="Lista dinámica bilingüe de usuarios maliciosos en Twitch, lista para API y moderación.">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <style>
-        /* --- VARIABLES DEL BUHO --- */
-        :root {
-            --buho-dark: #1A1A1A;
-            --buho-gold: #FFC300;
-            --buho-red: #E94560;
-            --buho-light-gray: #333333;
-            --buho-text-light: #F0F0F0;
-            --font-family-primary: 'Montserrat', sans-serif;
-            --shadow-base: 0 5px 15px rgba(0, 0, 0, 0.5);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        /* --- ESTILOS BASE Y TIPOGRAFÍA --- */
-        body {
-            background-color: var(--buho-dark);
-            color: var(--buho-text-light);
-            font-family: var(--font-family-primary);
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1, h2, h3 {
-            font-weight: 900;
-            color: var(--buho-gold);
-            margin-top: 1.5em;
-        }
-        h1 { font-size: 2.5em; text-align: center; }
-        h2 { font-size: 1.8em; border-bottom: 2px solid var(--buho-light-gray); padding-bottom: 5px; }
-        h3 { color: var(--buho-red); font-size: 1.3em; margin-top: 1em; }
+<title>Ban List & Moderation Registry | EL BUHO 89 . ORG SAS</title>
+<meta name="description" content="Registro público de moderación preventiva para Twitch. Lista de dominio público bajo Licencia MIT. Uso técnico y responsable.">
 
-        /* --- ENLACES Y BOTONES DE ACCIÓN --- */
-        a {
-            color: var(--buho-red);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        a:hover {
-            color: var(--buho-gold);
-        }
-        .cta-button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: var(--buho-red);
-            color: white;
-            border-radius: 5px;
-            font-weight: 700;
-            margin: 10px 5px;
-            text-transform: uppercase;
-            transition: background-color 0.3s, transform 0.2s;
-        }
-        .cta-button:hover {
-            background-color: var(--buho-gold);
-            color: var(--buho-dark);
-            transform: translateY(-2px);
-        }
-        .api-link {
-            background-color: var(--buho-light-gray);
-            color: var(--buho-gold);
-            border: 1px solid var(--buho-gold);
-        }
-        .api-link:hover {
-            background-color: var(--buho-gold);
-            color: var(--buho-dark);
-        }
-        
-        /* --- SECCIÓN DE RESUMEN (RESPONSIVE) --- */
-        .summary-flex {
-            display: flex;
-            gap: 30px;
-            flex-wrap: wrap; 
-        }
-        .summary-flex > div {
-            flex: 1 1 45%; 
-        }
-        
-        /* --- ADVERTENCIAS --- */
-        .warning {
-            color: var(--buho-red);
-            font-weight: 700;
-        }
-        .warning-box {
-            background-color: #331A1A;
-            border-left: 5px solid var(--buho-red);
-            padding: 15px;
-            margin: 20px 0;
-        }
+<link rel="canonical" href="https://banlist.elbuho89.org/">
 
-        /* --- PESTAÑAS (TABS) PARA PROTOCOLO --- */
-        .tabs {
-            display: flex;
-            margin-bottom: -1px;
-        }
-        .tab-button {
-            background-color: var(--buho-light-gray);
-            border: 1px solid var(--buho-light-gray);
-            color: var(--buho-text-light);
-            padding: 10px 20px;
-            cursor: pointer;
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
-            font-weight: 700;
-        }
-        .tab-button.active {
-            background-color: var(--buho-dark);
-            border-bottom: 2px solid var(--buho-red);
-            color: var(--buho-gold);
-        }
-        .tab-content {
-            border: 1px solid var(--buho-light-gray);
-            padding: 30px;
-            background-color: var(--buho-dark);
-            min-height: 400px;
-        }
+<meta property="og:type" content="website">
+<meta property="og:title" content="EL BUHO 89 – Twitch Ban List & Moderation Registry">
+<meta property="og:description" content="Registro técnico de dominio público para moderación preventiva. Licencia MIT. Uso bajo responsabilidad.">
+<meta property="og:url" content="https://banlist.elbuho89.org/">
 
-        /* --- MEDIA QUERIES (RESPONSIVE) --- */
-        @media (max-width: 768px) {
-            h1 { font-size: 2em; }
-            h2 { font-size: 1.5em; }
-            .summary-flex > div {
-                flex-basis: 100%; 
-            }
-            .api-buttons a {
-                display: block; 
-                margin-top: 10px;
-            }
-        }
-    </style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+:root {
+  --bg:#0d1117;
+  --panel:#161b22;
+  --border:#30363d;
+  --text:#c9d1d9;
+  --white:#fff;
+  --gold:#FFC300;
+  --red:#E5533D;
+}
+body {
+  background:var(--bg);
+  color:var(--text);
+  font-family:Inter,system-ui,sans-serif;
+}
+a:focus-visible {
+  outline:2px solid var(--gold);
+  outline-offset:3px;
+  border-radius:6px;
+}
+.lang-btn.active {
+  background:var(--gold);
+  color:#000;
+}
+</style>
 </head>
-<body>
-    <div class="container">
-        
-        <header style="text-align: center; padding: 40px 0;">
-            <h1 style="color: white;"><span style="color: var(--buho-red);">🛡️ EL BUHO 89:</span> BAN LIST</h1>
-            <p style="font-size: 1.2em; color: var(--buho-text-light);"><a href="https://banlist.elbuho89.org" style="color: var(--buho-gold); font-weight: 700;">banlist.elbuho89.org</a></p>
-        </header>
 
+<body class="min-h-screen flex flex-col p-4 md:p-8">
 
-        <section id="api-access" style="text-align: center; margin: 40px 0;">
-            <h2>🔗 Enlaces Rápidos / Quick Links</h2>
+<a href="#main"
+ class="sr-only focus:not-sr-only fixed top-2 left-2 z-50 bg-yellow-400 text-black px-4 py-2 rounded">
+ Saltar al contenido
+</a>
 
-            <div class="api-buttons">
-                <a href="https://github.com/elbuho89/banlist/blob/main/data/ban.txt" target="_blank" class="cta-button api-link">
-                    <i class="fas fa-file-alt"></i> ban.txt
-                </a>
-                <a href="https://github.com/elbuho89/banlist/blob/main/data/ban.json" target="_blank" class="cta-button api-link">
-                    <i class="fas fa-code"></i> ban.json
-                </a>
-                
-                <a href="https://github.com/elbuho89/banlist/blob/main/MENU.md" target="_blank" class="cta-button">
-                    <i class="fas fa-book"></i> MENU.MD
-                </a>
-                <a href="https://github.com/elbuho89/banlist/blob/main/Español/LEEME.md" target="_blank" class="cta-button">
-                    <i class="fas fa-file-word"></i> Leeme
-                </a>
-                <a href="https://github.com/elbuho89/banlist/blob/main/English/README.md" target="_blank" class="cta-button">
-                    <i class="fas fa-file-word"></i> Read Me
-                </a>
-            </div>
-        </section>
+<main id="main" class="max-w-6xl mx-auto w-full flex-grow">
 
-        <section id="protocol" style="margin-top: 50px;">
-            <h2 style="border-bottom: 2px solid var(--buho-red);">🛑 Aviso Legal y Protocolo Completo (Disclaimer)</h2>
-            
-            <div class="tabs">
-                <button class="tab-button active" onclick="openTab('es', this)">🇪🇸 Español</button>
-                <button class="tab-button" onclick="openTab('en', this)">🇬🇧 English</button>
-            </div>
+<!-- HEADER -->
+<header class="flex flex-col md:flex-row justify-between items-center pb-6 border-b border-[#30363d] mb-12">
+  <h1 class="text-2xl md:text-3xl font-bold flex items-center text-white">
+    <i class="fas fa-shield-halved text-red-500 mr-3"></i>
+    Ban List & Moderation Registry
+  </h1>
 
-            <div id="es-content" class="tab-content">
-                <h3>1. Objeto y Fuentes de la Lista</h3>
-                <p>Esta lista de usuarios es una compilación dinámica de nombres de usuario de la plataforma Twitch identificados con patrones de **"follow fake"**, spam, bots de publicidad, ataques de *hate raid* u otros comportamientos maliciosos. Su único fin es la protección y mejora de la moderación de canales.</p>
-                <ul>
-                    <li>**Listas de Bloqueo Públicas de la Comunidad.**</li>
-                    <li>**Sistemas de Moderación Avanzada:** Datos generados por bots reconocidos como **sery\_bot** y **CommanderRoot**.</li>
-                    <li>**Repositorios Comunitarios** y Listas Internas/Privadas.</li>
-                </ul>
+  <div class="flex gap-2 mt-4 md:mt-0">
+    <button onclick="setLang('es')" class="lang-btn px-3 py-1 rounded border border-[#30363d]">ES</button>
+    <button onclick="setLang('en')" class="lang-btn px-3 py-1 rounded border border-[#30363d]">EN</button>
+    <button disabled class="px-3 py-1 rounded border border-[#30363d] opacity-40 cursor-not-allowed">FR</button>
+    <button disabled class="px-3 py-1 rounded border border-[#30363d] opacity-40 cursor-not-allowed">RU</button>
+  </div>
+</header>
 
-                <h3>2. Riesgo de Inexactitud y Exención de Responsabilidad</h3>
-                <p class="warning">**RIESGO DE FALSOS POSITIVOS:** Existe un riesgo inherente de que usuarios legítimos sean sancionados incorrectamente. **USO BAJO SU PROPIO RIESGO:** Al integrar esta lista a través de APIs de terceros, **usted asume la total responsabilidad** por cualquier acción de sanción automática. Ni **[EL BUHO 89 . ORG SAS]** ni sus mantenedores asumen responsabilidad alguna por daños causados.</p>
+<!-- INTRO -->
+<section class="text-center mb-12" data-lang="es">
+  <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4">
+    Registro Público de Moderación Preventiva
+  </h2>
+  <p class="max-w-3xl mx-auto text-lg text-gray-300">
+    Este sitio mantiene una <strong>lista técnica de dominio público</strong> utilizada para
+    apoyar la moderación automatizada y humana en Twitch.
+  </p>
+</section>
 
-                <h3>3. Marco Legal y Protección de Datos</h3>
-                <p>Mantenida con la intención de cumplir con las leyes de la República de Colombia (Ley 1581 de 2012). Los datos son **públicos** (nombres de usuario de Twitch) y se recolectan con un fin legítimo (seguridad y moderación).</p>
-                
-                <h3>4. Solicitudes de Corrección y Soporte</h3>
-                <p>Si un nombre de usuario fue agregado o eliminado por error, por favor **genere un Ticket de Soporte (Issue)** en nuestro repositorio de GitHub. Nuestro personal verificará la información con diligencia.</p>
-                
-                <hr style="margin-top: 30px; border-color: var(--buho-light-gray);">
-                <p style="text-align: center; font-weight: 600;">
-                    <i class="fas fa-check-circle" style="color: var(--buho-gold);"></i> **Aceptación:** Al usar nuestra lista, usted declara haber leído y entendido este Aviso Legal, asumiendo la responsabilidad total.
-                </p>
-            </div>
+<section class="text-center mb-12 hidden" data-lang="en">
+  <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4">
+    Public Preventive Moderation Registry
+  </h2>
+  <p class="max-w-3xl mx-auto text-lg text-gray-300">
+    This website maintains a <strong>public-domain technical list</strong> used to support
+    automated and human moderation on Twitch.
+  </p>
+</section>
 
-            <div id="en-content" class="tab-content" style="display: none;">
-                <h3>1. Purpose and Data Sources</h3>
-                <p>This list is a dynamic compilation of Twitch usernames identified with patterns of **fake follows**, spam, ad bots, *hate raids*, or other malicious behaviors. Its sole purpose is the protection and enhancement of channel moderation.</p>
-                <ul>
-                    <li>**Public Community Blocklists.**</li>
-                    <li>**Advanced Moderation Systems:** Data generated by bots such as **sery\_bot** and **CommanderRoot**.</li>
-                    <li>**Community Repositories** and shared private lists.</li>
-                </ul>
+<!-- DATA -->
+<section class="bg-[#161b22] border border-[#30363d] rounded-xl p-8 mb-12">
+<h3 class="text-2xl font-bold text-white mb-4">
+  <i class="fas fa-database text-yellow-400 mr-2"></i> Data Access
+</h3>
 
-                <h3>2. Risk of Inaccuracy and Liability Waiver</h3>
-                <p class="warning">**RISK OF FALSE POSITIVES:** There is an inherent risk that legitimate users may be incorrectly sanctioned. **USE AT YOUR OWN RISK:** By integrating this list via third-party APIs, **the user assumes full responsibility** for any automatic sanction. Neither **[EL BUHO 89 . ORG SAS]** nor its maintainers are liable for any damages or errors caused.</p>
+<div class="flex flex-wrap gap-4">
+<a href="https://github.com/elbuho89/banlist/blob/main/data/ban.txt" target="_blank"
+ class="px-5 py-3 rounded bg-[#0d1117] border border-[#30363d] hover:border-yellow-400">ban.txt</a>
 
-                <h3>3. Legal Framework and Data Protection</h3>
-                <p>Maintained in compliance with the laws of the Republic of Colombia (Law 1581 of 2012). The data is declared **public** (Twitch usernames) and is collected for a legitimate purpose (security and moderation).</p>
-                
-                <h3>4. Correction Requests and Support</h3>
-                <p>If a username was incorrectly added or removed, please **Open a Support Ticket (Issue)** on our GitHub repository. Our staff will diligently verify the information.</p>
+<a href="https://github.com/elbuho89/banlist/blob/main/data/ban.json" target="_blank"
+ class="px-5 py-3 rounded bg-[#0d1117] border border-[#30363d] hover:border-yellow-400">ban.json</a>
 
-                <hr style="margin-top: 30px; border-color: var(--buho-light-gray);">
-                <p style="text-align: center; font-weight: 600;">
-                    <i class="fas fa-check-circle" style="color: var(--buho-gold);"></i> **Acceptance:** By using our bot list, you declare that you have read and understood this Legal Disclaimer, assuming total responsibility.
-                </p>
-            </div>
-        </section>
+<a href="https://github.com/elbuho89/banlist/tree/main" target="_blank"
+ class="px-6 py-3 rounded bg-yellow-400 text-black font-bold">GitHub Repository</a>
+</div>
+</section>
 
-        <footer style="text-align: center; margin-top: 50px; padding: 20px 0; border-top: 1px solid var(--buho-light-gray);">
-            <p>EL BUHO 89 ™ | <a href="https://elbuho89.org" style="color: var(--buho-gold);">Website</a> | <a href="https://github.com/elbuho89/banlist/blob/main/LICENSE">License</a></p>
-        </footer>
-    </div>
+<!-- LEGAL ES -->
+<section data-lang="es" class="space-y-6">
+<h3 class="text-3xl font-bold text-red-400">Marco Legal y Declaraciones</h3>
 
-    <script>
-        function openTab(tabName, elmnt) {
-            // Oculta todo el contenido de las pestañas
-            var i, tabcontent, tabbuttons;
-            tabcontent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            
-            // Remueve la clase "active" de todos los botones
-            tabbuttons = document.getElementsByClassName("tab-button");
-            for (i = 0; i < tabbuttons.length; i++) {
-                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
-            }
-            
-            // Muestra la pestaña actual, y añade la clase "active" al botón
-            document.getElementById(tabName + "-content").style.display = "block";
-            elmnt.className += " active";
-        }
-        
-        // Inicializar con la pestaña en español activa
-        document.addEventListener('DOMContentLoaded', function() {
-             // Asegura que el contenido en español esté visible por defecto si JS está activo
-             openTab('es', document.querySelector('.tab-button'));
-        });
-    </script>
+<p><strong>Dominio Público:</strong> Esta lista se compone exclusivamente de nombres de usuario públicos
+de Twitch y se distribuye como información técnica de dominio público.</p>
+
+<p><strong>No Acusación:</strong> Este registro <strong>NO constituye acusación, juicio ni afirmación de culpabilidad</strong>.
+Su finalidad es preventiva y técnica.</p>
+
+<p><strong>Fuentes:</strong></p>
+<ul class="list-disc list-inside">
+<li>Listas públicas comunitarias</li>
+<li>Herramientas de moderación reconocidas (sery_bot, CommanderRoot)</li>
+<li>Repositorios colaborativos</li>
+</ul>
+
+<div class="bg-[#331A1A] border-l-4 border-red-500 p-4 rounded">
+<strong>RIESGO DE FALSOS POSITIVOS:</strong><br>
+El uso es <strong>bajo su exclusiva responsabilidad</strong>. EL BUHO 89 . ORG SAS no
+responde por sanciones automáticas, bloqueos erróneos ni daños derivados.
+</div>
+
+<p><strong>Marco Jurídico:</strong> Cumple con la Ley 1581 de 2012 (Colombia) y principios
+internacionales de minimización de datos. La información es pública, limitada y con finalidad legítima.</p>
+
+<p><strong>Licencia:</strong> Este proyecto se distribuye bajo <strong>MIT License</strong>.
+El software se proporciona “AS IS”, sin garantía alguna.</p>
+</section>
+
+<!-- LEGAL EN -->
+<section data-lang="en" class="space-y-6 hidden">
+<h3 class="text-3xl font-bold text-red-400">Legal Framework & Disclaimers</h3>
+
+<p><strong>Public Domain:</strong> This list consists exclusively of public Twitch usernames
+and is distributed as public-domain technical information.</p>
+
+<p><strong>No Accusation:</strong> This registry <strong>does NOT constitute an accusation,
+judgment, or statement of guilt</strong>. It is strictly preventive and technical.</p>
+
+<p><strong>Sources:</strong></p>
+<ul class="list-disc list-inside">
+<li>Public community blocklists</li>
+<li>Recognized moderation tools (sery_bot, CommanderRoot)</li>
+<li>Collaborative repositories</li>
+</ul>
+
+<div class="bg-[#331A1A] border-l-4 border-red-500 p-4 rounded">
+<strong>RISK OF FALSE POSITIVES:</strong><br>
+Use is <strong>entirely at your own risk</strong>. EL BUHO 89 . ORG SAS assumes
+no liability for automated actions or damages.
+</div>
+
+<p><strong>Legal Basis:</strong> Complies with Colombian Law 1581 of 2012 and international
+data-minimization principles. Data is public, limited, and used for legitimate security purposes.</p>
+
+<p><strong>License:</strong> Distributed under the <strong>MIT License</strong>.
+Software is provided “AS IS”, without warranty.</p>
+</section>
+
+</main>
+
+<footer class="mt-16 pt-8 border-t border-[#30363d] text-center text-gray-500">
+<p>EL BUHO 89 . ORG SAS · Colombia © 2025</p>
+<p class="text-xs mt-2">Public Domain Data · MIT License · Responsible Use</p>
+<p class="text-xs mt-2">
+<a href="https://elbuho89.org" class="hover:text-white">Website</a> ·
+<a href="https://github.com/elbuho89/banlist/blob/main/LICENSE" class="hover:text-white">License</a>
+</p>
+</footer>
+
+<script>
+function setLang(lang){
+ document.querySelectorAll('[data-lang]').forEach(e=>{
+   e.classList.toggle('hidden', e.getAttribute('data-lang')!==lang);
+ });
+ document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+ document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+}
+setLang('es');
+</script>
+
 </body>
 </html>
